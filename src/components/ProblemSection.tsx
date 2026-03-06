@@ -1,4 +1,14 @@
+"use client";
+
 export default function ProblemSection() {
+    const scrollToSection = (e: React.MouseEvent, id: string) => {
+        e.preventDefault();
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    };
+
     const cards = [
         {
             icon: (
@@ -43,7 +53,7 @@ export default function ProblemSection() {
     ];
 
     return (
-        <section className="relative bg-white overflow-hidden">
+        <section id="pain-points" className="relative bg-white overflow-hidden">
             {/* Background accents */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute -top-24 -left-24 h-80 w-80 rounded-full bg-amber-300/25 blur-3xl" />
@@ -103,15 +113,15 @@ export default function ProblemSection() {
                     <p className="text-xs tracking-[0.22em] uppercase text-zinc-500">
                         Clear problems. Clear fixes.
                     </p>
-                    <a
-                        href="#"
-                        className="text-sm text-zinc-700 hover:text-zinc-900 transition-colors inline-flex items-center gap-2"
+                    <button
+                        onClick={(e) => scrollToSection(e, 'get-in-touch')}
+                        className="text-sm text-zinc-700 hover:text-zinc-900 transition-colors inline-flex items-center gap-2 cursor-pointer"
                     >
                         Talk to us
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
                         </svg>
-                    </a>
+                    </button>
                 </div>
             </div>
         </section>

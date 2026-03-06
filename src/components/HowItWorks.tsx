@@ -5,6 +5,13 @@ import { useRef, useState } from "react";
 const ZOOM_STEPS = [1, 1.5, 2];
 
 export default function HowItWorks() {
+    const scrollToSection = (e: React.MouseEvent, id: string) => {
+        e.preventDefault();
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    };
     const [modalOpen, setModalOpen] = useState(false);
     const [isSwapped, setIsSwapped] = useState(false);
     const [zoomIdx, setZoomIdx] = useState(0);
@@ -161,7 +168,7 @@ export default function HowItWorks() {
     }
 
     return (
-        <div className="bg-white text-slate-900 relative overflow-hidden">
+        <div id="how-it-works" className="bg-white text-slate-900 relative overflow-hidden">
             {/* Background accents */}
             <div className="pointer-events-none absolute inset-0">
                 <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-amber-200/45 blur-3xl" />
@@ -357,19 +364,19 @@ export default function HowItWorks() {
                         <button
                             type="button"
                             onClick={handleOpenModal}
-                            className="inline-flex h-11 items-center justify-center rounded-2xl border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-800 shadow-sm transition-colors hover:bg-slate-50"
+                            className="inline-flex h-11 items-center justify-center rounded-2xl border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-800 shadow-sm transition-colors hover:bg-slate-50 cursor-pointer"
                         >
                             View example output
                         </button>
-                        <a
-                            href="#"
-                            className="text-sm text-zinc-700 hover:text-zinc-900 transition-colors inline-flex items-center gap-2"
+                        <button
+                            onClick={(e) => scrollToSection(e, 'get-in-touch')}
+                            className="text-sm text-zinc-700 hover:text-zinc-900 transition-colors inline-flex items-center gap-2 cursor-pointer"
                         >
                             Talk to us
                             <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
                             </svg>
-                        </a>
+                        </button>
                     </div>
                 </section>
             </main>

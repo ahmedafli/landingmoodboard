@@ -1,4 +1,9 @@
+"use client";
+
+import { useState } from "react";
+
 export default function HeroSection() {
+    const [email, setEmail] = useState("");
     return (
         <section className="relative w-full h-screen bg-black overflow-hidden">
             {/* Background Video */}
@@ -40,16 +45,26 @@ export default function HeroSection() {
 
                 {/* Bottom-right area */}
                 <div className="w-full md:w-auto mt-4 md:mt-0">
-                    <div className="flex bg-white rounded-full overflow-hidden items-center p-1.5 pl-4 gap-2 shadow-lg max-w-md w-full">
+                    <form
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            setEmail("");
+                        }}
+                        className="flex bg-white rounded-full overflow-hidden items-center p-1.5 pl-4 gap-2 shadow-lg max-w-md w-full"
+                    >
                         <input
                             type="email"
                             placeholder="Type your email address"
+                            id="email-early-access-input"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                             className="text-sm text-gray-800 outline-none bg-transparent flex-1 placeholder-gray-400 min-w-0"
+                            required
                         />
-                        <button className="bg-[#1A1A1A] text-white rounded-full px-5 py-2.5 text-sm font-medium hover:bg-black transition-colors whitespace-nowrap">
+                        <button className="bg-[#1A1A1A] text-white rounded-full px-5 py-2.5 text-sm font-medium hover:bg-black transition-colors whitespace-nowrap cursor-pointer" type="submit" id="get-started-email">
                             Get Started
                         </button>
-                    </div>
+                    </form>
                 </div>
 
             </div>
