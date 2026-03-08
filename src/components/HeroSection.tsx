@@ -1,9 +1,29 @@
 "use client";
 
 import { useState } from "react";
+import { supabase } from "../lib/supabase";
 
 export default function HeroSection() {
     const [email, setEmail] = useState("");
+    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!email) return;
+
+        setStatus("loading");
+        const { error } = await supabase
+            .from("early_access")
+            .insert([{ email }]);
+
+        if (error) {
+            console.error("Supabase error:", error);
+            setStatus("error");
+        } else {
+            setStatus("success");
+            setEmail("");
+        }
+    };
     return (
         <section className="relative w-full h-screen bg-black overflow-hidden">
             {/* Background Video */}
@@ -46,10 +66,7 @@ export default function HeroSection() {
                 {/* Bottom-right area */}
                 <div className="w-full md:w-auto mt-4 md:mt-0">
                     <form
-                        onSubmit={(e) => {
-                            e.preventDefault();
-                            setEmail("");
-                        }}
+                        onSubmit={handleSubmit}
                         className="flex bg-white rounded-full overflow-hidden items-center p-1.5 pl-4 gap-2 shadow-lg max-w-md w-full"
                     >
                         <input
@@ -60,11 +77,23 @@ export default function HeroSection() {
                             onChange={(e) => setEmail(e.target.value)}
                             className="text-sm text-gray-800 outline-none bg-transparent flex-1 placeholder-gray-400 min-w-0"
                             required
+                            disabled={status === "loading" || status === "success"}
                         />
-                        <button className="bg-[#1A1A1A] text-white rounded-full px-5 py-2.5 text-sm font-medium hover:bg-black transition-colors whitespace-nowrap cursor-pointer" type="submit" id="get-started-email">
-                            Get Started
+                        <button
+                            className="bg-[#1A1A1A] text-white rounded-full px-5 py-2.5 text-sm font-medium hover:bg-black transition-colors whitespace-nowrap cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                            type="submit"
+                            id="get-started-email"
+                            disabled={status === "loading" || status === "success"}
+                        >
+                            {status === "loading" ? "..." : status === "success" ? "Joined!" : "Get Started"}
                         </button>
                     </form>
+                    {status === "error" && (
+                        <p className="mt-2 text-xs text-red-400 ml-4 absolute">Something went wrong. Please try again.</p>
+                    )}
+                    {status === "success" && (
+                        <p className="mt-2 text-xs text-emerald-400 ml-4 absolute">Thanks for joining! We'll be in touch soon.</p>
+                    )}
                 </div>
 
             </div>

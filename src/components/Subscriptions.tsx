@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { supabase } from "../lib/supabase";
 
 const scrollToSection = (e: React.MouseEvent, id: string) => {
     e.preventDefault();
@@ -126,8 +127,27 @@ const comparisonRows = [
 export default function Subscriptions() {
     const [annual, setAnnual] = useState(false);
     const [email, setEmail] = useState("");
+    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
     const proPrice = annual ? 23 : 29;
+
+    const handleEarlyAccessSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!email) return;
+
+        setStatus("loading");
+        const { error } = await supabase
+            .from("early_access")
+            .insert([{ email }]);
+
+        if (error) {
+            console.error("Supabase error:", error);
+            setStatus("error");
+        } else {
+            setStatus("success");
+            setEmail("");
+        }
+    };
 
     return (
         <section id="pricing" className="relative overflow-hidden bg-white">
@@ -338,10 +358,7 @@ export default function Subscriptions() {
                         <div className="mt-10">
                             <form
                                 className="group mx-auto flex max-w-lg flex-col gap-2 rounded-[22px] border border-white/10 bg-white/5 p-1.5 shadow-2xl backdrop-blur-xl transition-all focus-within:border-white/25 focus-within:bg-white/10 sm:flex-row"
-                                onSubmit={(e) => {
-                                    e.preventDefault();
-                                    setEmail("");
-                                }}
+                                onSubmit={handleEarlyAccessSubmit}
                             >
                                 <input
                                     type="email"
@@ -351,15 +368,23 @@ export default function Subscriptions() {
                                     placeholder="Enter your email..."
                                     className="flex-1 border-none bg-transparent px-6 py-4 text-sm text-white placeholder-white/30 focus:outline-none focus:ring-0"
                                     required
+                                    disabled={status === "loading" || status === "success"}
                                 />
                                 <button
                                     type="submit"
                                     id="email-early-access-submit"
-                                    className="inline-flex h-12 items-center justify-center rounded-2xl border border-white/20 bg-slate-950 px-8 text-sm font-bold text-white shadow-lg transition-all hover:bg-slate-900 active:scale-95 cursor-pointer"
+                                    className="inline-flex h-12 items-center justify-center rounded-2xl border border-white/20 bg-slate-950 px-8 text-sm font-bold text-white shadow-lg transition-all hover:bg-slate-900 active:scale-95 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                                    disabled={status === "loading" || status === "success"}
                                 >
-                                    Get Early Access
+                                    {status === "loading" ? "Submitting..." : status === "success" ? "Joined!" : "Get Early Access"}
                                 </button>
                             </form>
+                            {status === "error" && (
+                                <p className="mt-2 text-sm text-red-400">Something went wrong. Please try again.</p>
+                            )}
+                            {status === "success" && (
+                                <p className="mt-2 text-sm text-emerald-400">Thanks for joining! We'll be in touch soon.</p>
+                            )}
                             <p className="mt-6 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">
                                 We&apos;ll reach out within 24 hours to help you get started
                             </p>
