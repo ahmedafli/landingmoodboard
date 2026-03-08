@@ -327,12 +327,12 @@ export default function Features() {
                         <p className="mt-1 text-sm text-slate-600">Bring your catalog in once—reuse it across every project.</p>
                     </div>
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                        <Link
+                        {/* <Link
                             href="#"
                             className="inline-flex h-11 items-center justify-center rounded-2xl border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-800 shadow-sm transition-colors hover:bg-slate-50"
                         >
                             View a sample proposal
-                        </Link>
+                        </Link> */}
                         <button
                             onClick={(e) => scrollToSection(e, 'get-in-touch')}
                             className="text-sm text-zinc-700 hover:text-zinc-900 transition-colors inline-flex items-center gap-2 cursor-pointer"
