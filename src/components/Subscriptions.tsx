@@ -278,7 +278,7 @@ export default function Subscriptions() {
                                 ))}
                             </ul>
                         </div>
-                        <a href={annual ? CHECKOUT_LINKS.standard.annual : CHECKOUT_LINKS.standard.monthly} className="lemonsqueezy-button mt-auto inline-flex h-12 w-full items-center justify-center rounded-2xl border border-slate-200 bg-white px-6 text-sm font-semibold text-slate-800 transition-all hover:bg-slate-50 cursor-pointer">Select plan</a>
+                        <a href={annual ? CHECKOUT_LINKS.standard.annual : CHECKOUT_LINKS.standard.monthly} className="mt-auto inline-flex h-12 w-full items-center justify-center rounded-2xl border border-slate-200 bg-white px-6 text-sm font-semibold text-slate-800 transition-all hover:bg-slate-50 cursor-pointer">Select plan</a>
                     </article>
 
                     {/* Pro card */}
@@ -334,7 +334,7 @@ export default function Subscriptions() {
                                 ))}
                             </ul>
                         </div>
-                        <a href={annual ? CHECKOUT_LINKS.premium.annual : CHECKOUT_LINKS.premium.monthly} className="lemonsqueezy-button mt-auto inline-flex h-12 w-full items-center justify-center rounded-2xl bg-slate-900 px-6 text-sm font-semibold text-white shadow-lg transition-all hover:bg-slate-800 cursor-pointer">Select plan</a>
+                        <a href={annual ? CHECKOUT_LINKS.premium.annual : CHECKOUT_LINKS.premium.monthly} className="mt-auto inline-flex h-12 w-full items-center justify-center rounded-2xl bg-slate-900 px-6 text-sm font-semibold text-white shadow-lg transition-all hover:bg-slate-800 cursor-pointer">Select plan</a>
                     </article>
                 </div>
 

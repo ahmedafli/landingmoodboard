@@ -47,7 +47,6 @@ export default function RootLayout({
             })(window, document, "clarity", "script", "vsoxrfcjhk");
           `}
         </Script>
-        <Script strategy="afterInteractive" src="https://assets.lemonsqueezy.com/lemon.js" />
       </head>
       <body
         className={`${inter.variable} ${bebasNeue.variable} font-sans antialiased bg-black text-white`}
