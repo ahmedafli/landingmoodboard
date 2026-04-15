@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const CHECK_CIRCLE = (
@@ -63,25 +62,13 @@ const steps = [
 ];
 
 export default function ThankYouPage() {
-    const router = useRouter();
-    const [isAuthorized, setIsAuthorized] = useState(false);
+    const [isHydrated, setIsHydrated] = useState(false);
 
     useEffect(() => {
-        // Enforce that this page is only accessed via the Lemon Squeezy redirect
-        // Lemon Squeezy always appends ?orderId=XXX to the redirect URL
-        const isFromLemonSqueezyRedirect = window.location.search.toLowerCase().includes("order");
-        
-        if (!isFromLemonSqueezyRedirect) {
-            // Unauthorized: Kick them back to the homepage
-            router.replace("/");
-        } else {
-            // Authorized: Show the page
-            setIsAuthorized(true);
-        }
-    }, [router]);
+        setIsHydrated(true);
+    }, []);
 
-    // Show nothing while we are checking authorization to prevent a flicker
-    if (!isAuthorized) return null;
+    if (!isHydrated) return null;
 
     return (
         <main className="relative min-h-screen overflow-hidden bg-white">
