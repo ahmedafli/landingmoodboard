@@ -77,59 +77,94 @@ const SPARKLES_ICON = (
 );
 
 const freeFeatures = [
-    "Up to 10 product scrapes",
-    "Basic moodboard builder",
-    "Automated PDF tables",
-    "Standard support",
+    "Unlimited product imports from retailer websites",
+    "Unlimited moodboard projects",
+    " Smart pricing lists with images, SKUs, and totals",
+    "One-click PDF export",
+    "Premium presentation templates",
+    "Dedicated email support",
 ];
 
 const proFeatures = [
-    "Unlimited product scrapes",
-    "Advanced Moodboard builder",
-    "AI moodboard generation up to 20",
-    "Automated CSV/PDF tables",
-    "Priority email support",
+    "Everything in Standard",
+    "AI furniture inpainting and visual edits",
+    "AI-generated lifestyle room scenes",
+    "One-click presentation polishing",
+    "Premium export resolution",
+    "Full branding customization",
+    "VIP support",
 ];
+
 
 const comparisonRows = [
     {
-        label: "URL Scrapes",
-        sub: "Monthly per user",
-        free: <span>10 / mo</span>,
+        label: "Product Imports",
+        sub: "From retailer websites",
+        free: <span className="font-semibold text-slate-800">Unlimited</span>,
         pro: <span className="font-semibold text-emerald-600">Unlimited</span>,
     },
     {
-        label: "Moodboard builder",
+        label: "Moodboard Projects",
         sub: null,
+        free: <span className="font-semibold text-slate-800">Unlimited</span>,
+        pro: <span className="font-semibold text-emerald-600">Unlimited</span>,
+    },
+    {
+        label: "Smart Pricing Lists",
+        sub: "Includes images, SKUs & totals",
         free: <span className="text-emerald-500">{CHECK_ICON}</span>,
         pro: <span className="text-emerald-500">{CHECK_ICON}</span>,
     },
     {
-        label: "AI Moodboard Generation",
-        sub: "Monthly limit",
-        free: <span className="text-slate-300">{X_ICON}</span>,
-        pro: <span className="font-semibold text-slate-800">Up to 20</span>,
-    },
-    {
-        label: "Automated PDF Tables",
+        label: "PDF Export",
         sub: null,
-        free: <span className="text-emerald-500">{CHECK_ICON}</span>,
-        pro: <span className="text-emerald-500">{CHECK_ICON}</span>,
+        free: <span className="font-semibold text-slate-800">One-click</span>,
+        pro: <span className="font-semibold text-emerald-600">Premium Resolution</span>,
     },
     {
-        label: "Priority Support",
+        label: "Presentation Templates",
+        sub: null,
+        free: <span className="font-semibold text-slate-800">Premium</span>,
+        pro: <span className="font-semibold text-emerald-600">One-click Polishing</span>,
+    },
+    {
+        label: "Custom Branding",
         sub: null,
         free: <span className="text-slate-300">{MINUS_ICON}</span>,
         pro: <span className="text-emerald-500">{CHECK_ICON}</span>,
     },
+    {
+        label: "AI Generation",
+        sub: "Inpainting & Lifestyle scenes",
+        free: <span className="text-slate-300">{X_ICON}</span>,
+        pro: <span className="text-emerald-500">{CHECK_ICON}</span>,
+    },
+    {
+        label: "Support Level",
+        sub: null,
+        free: <span className="font-semibold text-slate-800">Dedicated Email</span>,
+        pro: <span className="font-semibold text-emerald-600">VIP Support</span>,
+    },
 ];
+
+const CHECKOUT_LINKS = {
+    standard: {
+        monthly: process.env.NEXT_PUBLIC_LS_STANDARD_MONTHLY || "",
+        annual: process.env.NEXT_PUBLIC_LS_STANDARD_ANNUAL || ""
+    },
+    premium: {
+        monthly: process.env.NEXT_PUBLIC_LS_PREMIUM_MONTHLY || "",
+        annual: process.env.NEXT_PUBLIC_LS_PREMIUM_ANNUAL || ""
+    }
+};
 
 export default function Subscriptions() {
     const [annual, setAnnual] = useState(false);
     const [email, setEmail] = useState("");
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-    const proPrice = annual ? 23 : 29;
+    const standardPrice = annual ? 75 : 79;
+    const proPrice = annual ? 150 : 159;
 
     const handleEarlyAccessSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -189,7 +224,7 @@ export default function Subscriptions() {
                         </button>
                         <span className="text-slate-500">
                             Annual{" "}
-                            <span className="ml-1 font-bold text-emerald-600">-20%</span>
+                            <span className="ml-1 font-bold text-emerald-600">Save</span>
                         </span>
                     </div>
                 </header>
@@ -220,14 +255,19 @@ export default function Subscriptions() {
                                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
                                     </svg>
                                 </div>
-                                <h3 className="text-xl font-semibold tracking-tight text-slate-900" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>Free</h3>
+                                <h3 className="text-xl font-semibold tracking-tight text-slate-900" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>Standard Plan</h3>
                             </div>
                             <div className="mb-6">
-                                <span className="text-4xl font-bold tracking-tight text-slate-900">$0</span>
+                                <span className="text-4xl font-bold tracking-tight text-slate-900">${standardPrice}</span>
                                 <span className="ml-1 text-sm text-slate-500">/month</span>
+                                {annual && (
+                                    <span className="ml-2 text-xs font-semibold text-amber-600">
+                                        billed annually
+                                    </span>
+                                )}
                             </div>
                             <p className="mb-8 text-sm leading-relaxed text-slate-600">
-                                Perfect for individual designers looking to organize their first catalogs.
+                                Built for interior designers and furniture retailers who need a fast, professional way to create client-ready moodboards and pricing lists.
                             </p>
                             <ul className="mb-8 space-y-4">
                                 {freeFeatures.map((f) => (
@@ -238,7 +278,7 @@ export default function Subscriptions() {
                                 ))}
                             </ul>
                         </div>
-                        <button onClick={(e) => scrollToSection(e, 'get-in-touch')} className="mt-auto inline-flex h-12 w-full items-center justify-center rounded-2xl border border-slate-200 bg-white px-6 text-sm font-semibold text-slate-800 transition-all hover:bg-slate-50 cursor-pointer">Get Started</button>
+                        <a href={annual ? CHECKOUT_LINKS.standard.annual : CHECKOUT_LINKS.standard.monthly} className="lemonsqueezy-button mt-auto inline-flex h-12 w-full items-center justify-center rounded-2xl border border-slate-200 bg-white px-6 text-sm font-semibold text-slate-800 transition-all hover:bg-slate-50 cursor-pointer">Select plan</a>
                     </article>
 
                     {/* Pro card */}
@@ -270,7 +310,7 @@ export default function Subscriptions() {
                                         <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
                                     </svg>
                                 </div>
-                                <h3 className="text-xl font-semibold tracking-tight text-slate-900" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>Pro</h3>
+                                <h3 className="text-xl font-semibold tracking-tight text-slate-900" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>Premium Plan</h3>
                             </div>
                             <div className="mb-6">
                                 <span className="text-4xl font-bold tracking-tight text-slate-900">${proPrice}</span>
@@ -282,7 +322,8 @@ export default function Subscriptions() {
                                 )}
                             </div>
                             <p className="mb-8 text-sm leading-relaxed text-slate-600">
-                                For scaling agencies that need reliable, high-volume production output.
+                                For studios, retailers, and design professionals who need faster workflows and premium AI-powered client presentations.
+
                             </p>
                             <ul className="mb-8 space-y-4">
                                 {proFeatures.map((f) => (
@@ -293,7 +334,7 @@ export default function Subscriptions() {
                                 ))}
                             </ul>
                         </div>
-                        <button onClick={(e) => scrollToSection(e, 'get-in-touch')} className="mt-auto inline-flex h-12 w-full items-center justify-center rounded-2xl bg-slate-900 px-6 text-sm font-semibold text-white shadow-lg transition-all hover:bg-slate-800 cursor-pointer">Upgrade Now</button>
+                        <a href={annual ? CHECKOUT_LINKS.premium.annual : CHECKOUT_LINKS.premium.monthly} className="lemonsqueezy-button mt-auto inline-flex h-12 w-full items-center justify-center rounded-2xl bg-slate-900 px-6 text-sm font-semibold text-white shadow-lg transition-all hover:bg-slate-800 cursor-pointer">Select plan</a>
                     </article>
                 </div>
 
@@ -321,10 +362,10 @@ export default function Subscriptions() {
                                             Core Features
                                         </th>
                                         <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-900">
-                                            Free
+                                            Standard Plan
                                         </th>
                                         <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-emerald-600">
-                                            Pro
+                                            Premium Plan
                                         </th>
                                     </tr>
                                 </thead>
