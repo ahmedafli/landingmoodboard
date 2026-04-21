@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { supabase } from "../lib/supabase";
 
 const scrollToSection = (e: React.MouseEvent, id: string) => {
@@ -149,12 +150,12 @@ const comparisonRows = [
 
 const CHECKOUT_LINKS = {
     standard: {
-        monthly: process.env.NEXT_PUBLIC_LS_STANDARD_MONTHLY || "",
-        annual: process.env.NEXT_PUBLIC_LS_STANDARD_ANNUAL || ""
+        monthly: process.env.NEXT_PUBLIC_POLAR_STANDARD_MONTHLY || "",
+        annual: process.env.NEXT_PUBLIC_POLAR_STANDARD_ANNUAL || ""
     },
     premium: {
-        monthly: process.env.NEXT_PUBLIC_LS_PREMIUM_MONTHLY || "",
-        annual: process.env.NEXT_PUBLIC_LS_PREMIUM_ANNUAL || ""
+        monthly: process.env.NEXT_PUBLIC_POLAR_PREMIUM_MONTHLY || "",
+        annual: process.env.NEXT_PUBLIC_POLAR_PREMIUM_ANNUAL || ""
     }
 };
 
@@ -441,12 +442,15 @@ export default function Subscriptions() {
                             Subscription wins: scrape faster, present better, send sooner.
                         </div>
                         <div className="flex items-center gap-8 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
-                            <a id="footer-pricing-privacy-link" className="transition-colors hover:text-slate-900 cursor-pointer">
+                            <Link href="/privacy-policy" id="footer-pricing-privacy-link" className="transition-colors hover:text-slate-900 cursor-pointer">
                                 Privacy Policy
-                            </a>
-                            <a id="footer-pricing-terms-link" className="transition-colors hover:text-slate-900 cursor-pointer">
-                                Terms of Use
-                            </a>
+                            </Link>
+                            <Link href="/terms-of-service" id="footer-pricing-terms-link" className="transition-colors hover:text-slate-900 cursor-pointer">
+                                Terms of Service
+                            </Link>
+                            <Link href="/refund-cancellation-policy" id="footer-pricing-refund-link" className="transition-colors hover:text-slate-900 cursor-pointer">
+                                Refund / Cancellation Policy
+                            </Link>
                             <a id="footer-pricing-contact-link" className="transition-colors hover:text-slate-900 cursor-pointer">
                                 Contact Support
                             </a>

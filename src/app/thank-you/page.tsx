@@ -47,7 +47,7 @@ const steps = [
     {
         icon: MAIL_ICON,
         title: "Check your email",
-        description: "You'll receive a payment confirmation from Lemon Squeezy with your receipt.",
+        description: "You'll receive a payment confirmation email with your receipt and next steps.",
     },
     {
         icon: CLOCK_ICON,
@@ -161,8 +161,33 @@ export default function ThankYouPage() {
                     ))}
                 </div>
 
+                {/* Billing Management Block */}
+                <div className="mx-auto mt-16 w-full max-w-3xl rounded-[28px] border border-emerald-100 bg-emerald-50/50 p-8 sm:p-10 transition-all hover:shadow-md">
+                    <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
+                        <div className="text-center sm:text-left">
+                            <div className="mb-2 flex items-center justify-center gap-2 sm:justify-start">
+                                <svg className="h-5 w-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                <h3 className="text-lg font-semibold text-slate-900" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                                    Invoices & Billing Portal
+                                </h3>
+                            </div>
+                            <p className="max-w-md text-sm leading-relaxed text-slate-600">
+                                Need help with invoices or your subscription? Contact support and our team will assist you quickly.
+                            </p>
+                        </div>
+                        <a
+                            href="mailto:support@doubleadigitalfuture.com"
+                            className="inline-flex h-12 w-full shrink-0 items-center justify-center rounded-2xl bg-emerald-600 px-6 text-sm font-semibold text-white shadow-lg transition-all hover:bg-emerald-500 hover:shadow-xl active:scale-[0.98] sm:w-auto"
+                        >
+                            Contact Billing Support
+                        </a>
+                    </div>
+                </div>
+
                 {/* CTA buttons */}
-                <div className="mt-16 flex flex-col items-center gap-4 sm:flex-row">
+                <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row">
                     <Link
                         href="/"
                         className="inline-flex h-12 items-center justify-center rounded-2xl bg-slate-900 px-8 text-sm font-semibold text-white shadow-lg transition-all hover:bg-slate-800 hover:shadow-xl active:scale-[0.98]"
@@ -179,7 +204,7 @@ export default function ThankYouPage() {
 
                 {/* Trust badge */}
                 <p className="mt-12 text-center text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
-                    Secure payment powered by Lemon Squeezy · 100% Money-back guarantee
+                    Secure checkout powered by Polar.sh · 100% Money-back guarantee
                 </p>
             </div>
 
