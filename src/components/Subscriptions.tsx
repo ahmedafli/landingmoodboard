@@ -82,14 +82,12 @@ const freeFeatures = [
     "Unlimited moodboard projects",
     " Smart pricing lists with images, SKUs, and totals",
     "One-click PDF export",
-    "Premium presentation templates",
     "Dedicated email support",
 ];
 
 const proFeatures = [
     "Everything in Standard",
     "AI furniture inpainting and visual edits",
-    "AI-generated lifestyle room scenes",
     "One-click presentation polishing",
     "Premium export resolution",
     "Full branding customization",
@@ -135,7 +133,7 @@ const comparisonRows = [
         pro: <span className="text-emerald-500">{CHECK_ICON}</span>,
     },
     {
-        label: "AI Generation",
+        label: "AI Furniture Inpainting",
         sub: "Inpainting & Lifestyle scenes",
         free: <span className="text-slate-300">{X_ICON}</span>,
         pro: <span className="text-emerald-500">{CHECK_ICON}</span>,

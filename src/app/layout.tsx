@@ -15,8 +15,13 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  title: "Interior Design Agency",
-  description: "Interior Design Agency Landing Page",
+  title: "Interior Design studio",
+  description: "Interior Design studio Landing Page by doublea digital future",
+  icons: {
+    icon: "/doublea.jpg",
+    shortcut: "/doublea.jpg",
+    apple: "/doublea.jpg",
+  },
 };
 
 export default function RootLayout({
