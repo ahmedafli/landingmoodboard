@@ -3,6 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import ProblemSection from "@/components/ProblemSection";
 import HowItWorks from "@/components/HowItWorks";
 import Features from "@/components/Features";
+import PremiumAIFeature from "@/components/PremiumAIFeature";
 import Subscriptions from "@/components/Subscriptions";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <ProblemSection />
       <HowItWorks />
       <Features />
+      <PremiumAIFeature />
       <Subscriptions />
     </main>
   );

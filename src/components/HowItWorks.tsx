@@ -364,18 +364,14 @@ export default function HowItWorks() {
                         <button
                             type="button"
                             onClick={handleOpenModal}
-                            className="inline-flex h-11 items-center justify-center rounded-2xl border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-800 shadow-sm transition-colors hover:bg-slate-50 cursor-pointer"
+                            className="group relative inline-flex h-12 items-center justify-center gap-2.5 rounded-2xl bg-slate-900 px-6 text-sm font-semibold text-white shadow-lg shadow-slate-900/20 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-slate-900/30 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-900 focus:ring-offset-2 cursor-pointer overflow-hidden"
                         >
-                            View example output
-                        </button>
-                        <button
-                            onClick={(e) => scrollToSection(e, 'get-in-touch')}
-                            className="text-sm text-zinc-700 hover:text-zinc-900 transition-colors inline-flex items-center gap-2 cursor-pointer"
-                        >
-                            Talk to us
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+                            <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_1.5s_infinite]" />
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-[18px] h-[18px] text-amber-300 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                                <circle cx="12" cy="12" r="3" />
                             </svg>
+                            View example output
                         </button>
                     </div>
                 </section>
@@ -609,6 +605,9 @@ export default function HowItWorks() {
                 @keyframes floatIn {
                     from { opacity: 0; transform: translate(10px, 10px) scale(0.98); }
                     to { opacity: 1; transform: translate(0, 0) scale(1); }
+                }
+                @keyframes shimmer {
+                    100% { transform: translateX(100%); }
                 }
             `}</style>
         </div>
