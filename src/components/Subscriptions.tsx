@@ -163,7 +163,7 @@ export default function Subscriptions() {
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
     const standardPrice = annual ? 79 : 85;
-    const proPrice = annual ? 139 : 140;
+    const proPrice = annual ? 149 : 159;
 
     const handleEarlyAccessSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
