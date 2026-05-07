@@ -1,12 +1,75 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400&f[]=general-sans@700,600,400&display=swap');
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-inter);
+  --font-sans: 'Satoshi', var(--font-inter);
+  --font-general: 'General Sans', sans-serif;
   --font-bebas-neue: var(--font-bebas-neue);
 }
 
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.8);
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(228, 228, 231, 0.7); /* zinc-200 equivalent */
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.1);
+  border-color: rgba(228, 228, 231, 1);
+}
+
+.video-container {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: 0 30px 100px -20px rgba(0, 0, 0, 0.15);
+}
+
+.play-button {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
+}
+
+.play-button:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(1.1);
+}
+
+.gradient-bg {
+  background: radial-gradient(circle at 10% 20%, rgba(224, 242, 254, 0.6) 0%, rgba(248, 250, 252, 1) 90%);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
 body {
-  font-family: var(--font-inter), sans-serif;
-  background-color: black;
-  color: white;
+  font-family: 'Satoshi', var(--font-inter), sans-serif;
+  background-color: white;
+  color: #18181b; /* zinc-900 */
 }
