@@ -47,7 +47,7 @@ const steps = [
     {
         icon: MAIL_ICON,
         title: "Check your email",
-        description: "You'll receive a payment confirmation email with your receipt and next steps.",
+        description: "You will find your invoice and billing plan in the confirmation email already sent to you.",
     },
     {
         icon: CLOCK_ICON,
@@ -170,18 +170,18 @@ export default function ThankYouPage() {
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                 </svg>
                                 <h3 className="text-lg font-semibold text-slate-900" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
-                                    Invoices & Billing Portal
+                                    Invoices & Billing Plan
                                 </h3>
                             </div>
                             <p className="max-w-md text-sm leading-relaxed text-slate-600">
-                                Need help with invoices or your subscription? Contact support and our team will assist you quickly.
+                                Your invoice and billing plan details have been sent to your email. If you need any assistance, feel free to contact support.
                             </p>
                         </div>
                         <a
                             href="mailto:support@doubleadigitalfuture.com"
                             className="inline-flex h-12 w-full shrink-0 items-center justify-center rounded-2xl bg-emerald-600 px-6 text-sm font-semibold text-white shadow-lg transition-all hover:bg-emerald-500 hover:shadow-xl active:scale-[0.98] sm:w-auto"
                         >
-                            Contact Billing Support
+                            Contact Support
                         </a>
                     </div>
                 </div>
