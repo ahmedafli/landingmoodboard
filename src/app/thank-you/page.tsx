@@ -178,7 +178,7 @@ export default function ThankYouPage() {
                             </p>
                         </div>
                         <a
-                            href="mailto:support@doubleadigitalfuture.com"
+                            href="mailto:double.a.digitalfuture@gmail.com"
                             className="inline-flex h-12 w-full shrink-0 items-center justify-center rounded-2xl bg-emerald-600 px-6 text-sm font-semibold text-white shadow-lg transition-all hover:bg-emerald-500 hover:shadow-xl active:scale-[0.98] sm:w-auto"
                         >
                             Contact Support
@@ -195,7 +195,7 @@ export default function ThankYouPage() {
                         Back to Home
                     </Link>
                     <a
-                        href="mailto:support@doubleadigitalfuture.com"
+                        href="mailto:double.a.digitalfuture@gmail.com"
                         className="inline-flex h-12 items-center justify-center rounded-2xl border border-slate-200 bg-white px-8 text-sm font-semibold text-slate-700 transition-all hover:bg-slate-50"
                     >
                         Contact Support

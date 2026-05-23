@@ -41,7 +41,7 @@ export default function PrivacyPolicyPage() {
                     <h2 className="text-lg font-semibold text-slate-900">5. Contact</h2>
                     <p>
                         For privacy questions or requests, contact{" "}
-                        <a className="text-emerald-600 hover:text-emerald-500" href="mailto:support@doubleadigitalfuture.com">
+                        <a className="text-emerald-600 hover:text-emerald-500" href="mailto:double.a.digitalfuture@gmail.com">
                         double.a.digitalfuture@gmail.com
                         </a>.
                     </p>
